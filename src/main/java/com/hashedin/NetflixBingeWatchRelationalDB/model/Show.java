@@ -20,12 +20,14 @@ public class Show {
     private String category;
     private String description;
 
-    public Show(String showId, String type, String name, String director, String cast, String country, String date_added, String release_year, String season_code, String season_count, String category, String description) {
+    public Show(){}
+
+    public Show(String showId, String type, String name, String director, String casting, String country, String date_added, String release_year, String season_code, String season_count, String category, String description) {
         this.showId = showId;
         this.type = type;
         this.name = name;
         this.director = director;
-        this.casting = cast;
+        this.casting = casting;
         this.country = country;
         this.date_added = date_added;
         this.release_year = release_year;
@@ -71,8 +73,8 @@ public class Show {
         return casting;
     }
 
-    public void setCast(String cast) {
-        this.casting = cast;
+    public void setCast(String casting) {
+        this.casting = casting;
     }
 
     public String getCountry() {

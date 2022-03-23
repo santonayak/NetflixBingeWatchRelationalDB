@@ -18,11 +18,8 @@ import java.util.stream.Collectors;
 public class CSVParserService {
 
     static List<Show> showList = new ArrayList<>();
-
-
     static {
         String fileName = "/Users/santonayak/Downloads/NetfllixBingeWebAPI/src/main/resources/netflix.csv";
-
 //        String line = "";
 //
 //        BufferedReader reader = null;
@@ -62,8 +59,6 @@ public class CSVParserService {
     }
 
     public static void main(String[] args) throws IOException {
-
-
         showList.stream().forEach(a -> System.out.println(a));
     }
 

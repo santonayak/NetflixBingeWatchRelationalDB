@@ -1,6 +1,7 @@
 package com.hashedin.NetflixBingeWatchRelationalDB;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,18 +10,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class NetflixBingeWatchRelationalDbApplication {
+public class NetflixBingeWatchRelationalDbApplication  implements CommandLineRunner {
 
-	@Autowired
-	TestRepository testRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(NetflixBingeWatchRelationalDbApplication.class, args);
 	}
 
-	@PostMapping("/create")
-	public Test createTest(@RequestBody Test test){
-		return  testRepository.save(test);
 
+	//Runner to sync csv with database once application starts
+	@Override
+	public void run(String... args) throws Exception {
+		System.out.println("Hello from runner");
 	}
-
 }

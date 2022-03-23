@@ -1,6 +1,4 @@
 package com.hashedin.NetflixBingeWatchRelationalDB.controller;
-import com.hashedin.NetflixBingeWatchRelationalDB.Test;
-import com.hashedin.NetflixBingeWatchRelationalDB.TestRepository;
 import com.hashedin.NetflixBingeWatchRelationalDB.model.Show;
 import com.hashedin.NetflixBingeWatchRelationalDB.repository.ShowRepository;
 import com.hashedin.NetflixBingeWatchRelationalDB.service.CSVParserService;
@@ -23,7 +21,6 @@ public class ShowController {
     @PostMapping("/createShow")
     public Show createTest(@RequestBody Show show){
         return  showRepository.save(show);
-
     }
 
 
@@ -40,8 +37,6 @@ public class ShowController {
     public  List<Show> getMovieBytype(@RequestParam Map<String, String> dataMap, HttpServletRequest request, HttpServletResponse response){
 
         TimingMiddleware timingMiddleware = (TimingMiddleware) request.getAttribute("timer");
-
-
         List<Show> shows = null;
         if(dataMap.containsKey("movieType")){
             String type = dataMap.get("movieType");
@@ -53,9 +48,7 @@ public class ShowController {
         if(dataMap.containsKey("count")){
             Integer n = Integer.valueOf(dataMap.get("count"));
             Long value = timingMiddleware.end();
-
             shows = CSVParserService.getNShows(n);
-
             response.setHeader("X-TIME-TO-EXECUTE",value.toString());
             return  shows;
         }

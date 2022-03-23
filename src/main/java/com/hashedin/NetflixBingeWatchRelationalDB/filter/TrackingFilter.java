@@ -14,11 +14,9 @@ import java.io.IOException;
 public class TrackingFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
         TimingMiddleware timingMiddleware = new TimingMiddleware();
         timingMiddleware.start();
         boolean flag = validateRequest(request);
-
         if(flag == false){
             response.setStatus(401);
             Long value = timingMiddleware.end();
@@ -27,7 +25,6 @@ public class TrackingFilter extends OncePerRequestFilter {
         }
         request.setAttribute("timer", timingMiddleware);
         filterChain.doFilter(request, response);
-
     }
 
 
@@ -38,6 +35,5 @@ public class TrackingFilter extends OncePerRequestFilter {
             return false;
         }
         return true;
-
     }
 }
