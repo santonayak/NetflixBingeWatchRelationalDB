@@ -1,6 +1,9 @@
 package com.hashedin.NetflixBingeWatchRelationalDB.service;
 
 import com.hashedin.NetflixBingeWatchRelationalDB.model.Show;
+import com.hashedin.NetflixBingeWatchRelationalDB.repository.ShowRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -15,7 +18,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class CSVParserService {
+
+    @Autowired
+    static ShowRepository showRepository;
 
     static List<Show> showList = new ArrayList<>();
     static {
@@ -90,5 +97,10 @@ public class CSVParserService {
             Date showDate = null; //e.getDate_added()
             return showDate.after(startDate) && showDate.before(endDate);
         }).collect(Collectors.toList());
+    }
+
+    public static void UpdateDBWithCSV() {
+        showRepository.saveAll(showList);
+
     }
 }
