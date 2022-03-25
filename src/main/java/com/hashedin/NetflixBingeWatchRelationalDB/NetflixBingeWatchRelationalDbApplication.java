@@ -22,7 +22,7 @@ public class NetflixBingeWatchRelationalDbApplication  implements CommandLineRun
 	//Runner to sync csv with database once application starts
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Hello from runner");
-		CSVParserService.UpdateDBWithCSV();
+//		System.out.println("Hello from runner");
+//		CSVParserService.UpdateDBWithCSV();
 	}
 }
